@@ -1,0 +1,39 @@
+{
+  "name": "Wallet",
+  "plural": "wallets",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "amount": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "currencyTypeId": {
+      "type": "number",
+      "required": true
+    },
+    "customerId": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "currencyType": {
+      "type": "hasOne",
+      "model": "CurrencyType",
+      "foreignKey": "currencyTypeId"
+    },
+    "customer": {
+      "type": "hasOne",
+      "model": "Customer",
+      "foreignKey": "customerId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
