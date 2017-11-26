@@ -28,12 +28,23 @@
       "model": "CurrencyType",
       "foreignKey": "currencyTypeId"
     },
+    "transactions": {
+      "type": "hasMany",
+      "model": "Transaction"
+    },
     "customer": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Customer",
       "foreignKey": "customerId"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }
