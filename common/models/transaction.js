@@ -1,9 +1,9 @@
 'use strict';
 const CurrencyInfo = require('../../functionalities/currency_info');
 
-module.exports = async function(Transaction) {
+module.exports = function(Transaction) {
 
-    Transaction.observe('after save', function removeUnwantedField(ctx, next) {
+    Transaction.observe('after save', function incrementWalletAmmount(ctx, next) {
         if (ctx.isNewInstance !== undefined) {
             var Wallet = Transaction.app.models.Wallet;
             Wallet.findById(ctx.instance.walletId, function name(err, wallet) {
@@ -14,11 +14,11 @@ module.exports = async function(Transaction) {
                         increment = (reguard / change);
                         if (isNaN(increment)) increment = 0;
                     }
-                    wallet.updateAttribute('amount', wallet.amount + increment, function name(err, wallet) {}); 
+                    wallet.updateAttribute('amount', wallet.amount + increment, function name(err, wallet) {
+                        next();
+                    }); 
                 });
             });
         }
-        next();
-      });
-
+    });
 };
