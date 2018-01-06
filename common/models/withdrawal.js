@@ -3,6 +3,7 @@ const FeeInfo = require('../../functionalities/fee_info');
 const WithdrawlTrans = require('../../functionalities/withdrwal');
 
 module.exports = function(Withdrawal) {
+    /*
     Withdrawal.observe('before save', function incrementWalletAsmount(ctx, next) {
         if (ctx.isNewInstance === true) {
             var Wallet = Withdrawal.app.models.Wallet;
@@ -34,5 +35,5 @@ module.exports = function(Withdrawal) {
                 });
             });
         }
-    });
+    });*/
 };

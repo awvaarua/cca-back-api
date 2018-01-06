@@ -36,6 +36,11 @@
       "type": "belongsTo",
       "model": "Customer",
       "foreignKey": "customerId"
+    },
+    "withdrawals": {
+      "type": "hasMany",
+      "model": "Withdrawal",
+      "foreignKey": "walletId"
     }
   },
   "acls": [
